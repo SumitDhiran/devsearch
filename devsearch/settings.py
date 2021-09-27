@@ -136,9 +136,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'devsearch',
-        'USER':  'sumitdhiran',                            #for loacal database on postgres ~     #'postgres',             
-        'PASSWORD': 'Easy#123',                                                                   #'Easy@123',
-        'HOST':  'database-1.cyghreaxl1rw.ap-south-1.rds.amazonaws.com',                          #'localhost',
+        'USER':  os.environ.get('DB_USER'),                            #for loacal database on postgres ~     #'postgres',             
+        'PASSWORD': os.environ.get('DB_PASS'),                                                                   #'Easy@123',
+        'HOST':  os.environ.get('DB_HOST'),                          #'localhost',
         'PORT': '5432',
     }
 }
@@ -192,8 +192,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'email.from.dhiran@gmail.com'
-EMAIL_HOST_PASSWORD = 'ueadtlgbynpfyxjo'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)
@@ -223,9 +223,9 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 
-AWS_ACCESS_KEY_ID = 'AKIAQTJEXEAVXHGLHXEY'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'devsearch-bucket-sumit'
+AWS_ACCESS_KEY_ID         = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY     = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME   = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 
 if os.getcwd() =='/app':
